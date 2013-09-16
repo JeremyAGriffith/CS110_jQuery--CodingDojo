@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>jQuery Exercise</title>
+
+		<!-- SCRIPTS links -->
+		<!-- jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<!-- bootstrap -->
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+		<!-- CSS links -->
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+
+		<!-- INLINE SCRIPTS -->
+		<script type="text/javascript">
+			//run the following function when the document is ready
+			$(document).ready(function(){
+				$(".datepicker").datepicker();
+				$(".alert").hide();
+
+				$("#date_form").on('submit', function(){
+					$("#report").html(
+						"Your form information:<br />" +
+						$("#from").attr('name') + " : " + $("#from").val() + "<br />" + 
+						$("#date").attr('name') + " : " + $("#date").val());
+
+					$(".alert").show();
+
+					return false;
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="container">
+			<h1>jQuery - assignment 1</h1>
+
+			<div class="alert alert-success" id="report">
+
+			</div>
+
+			<div class="row">
+				<div class="span4">
+					<form action="process.php" method="post" id="date_form">
+						<div>
+							From: <input type="text" name="from" class="datepicker" id="from"/>
+						</div>
+						<div>
+							To: <input type="text" name="to" class="datepicker" id="date"/>
+						</div>
+						<input type="submit" class="btn btn-large" name="submit" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

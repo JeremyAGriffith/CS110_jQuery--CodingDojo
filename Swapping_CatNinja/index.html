@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>jQuery - Intermediate 2 && Optional</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+
+	<style>
+		ul{
+			list-style: none;
+		}
+	</style>
+
+	<script>
+		$(document).ready(function(){
+			function randomize () {
+				var arr = [1,2,3,4,5];
+				var list = "";
+				var type = Math.round(Math.random()) ? "nin" : "cat";
+				while (arr.length)
+				{
+					var obj = type;
+					obj += arr.splice(Math.floor(Math.random()*arr.length), 1) + ".png";
+					list += "<li><img src='"+obj+"' /></li>";
+				}
+				$("#cat_ninja").html(list);
+			}
+
+			randomize();
+
+			$("ul").sortable();
+			// when an image is clicked switch between a cat or ninja but preserve its 1-5 section # of the whole image
+			// change the source file name using .attr() and ternary operator
+			$("img").on('click', function(){
+				var file_name = $(this).attr('src').match("nin");
+				$(this).attr('src', file_name ? $(this).attr('src').replace('nin', 'cat') : $(this).attr('src').replace('cat', 'nin'));
+			});
+			
+			$("form").on('submit', function(){
+				console.log($("#first").val());
+				var record = '<tr><td>' + $("#first").val() + 
+					'</td><td>' + $("#last").val() + 
+					'</td><td>' + $("#email").val() + 
+					'</td><td>' + $("#contact_num").val() + '</td></tr>';
+				$("#result").append(record);
+
+				// prevent form submitting
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="span4">
+				<ul id="cat_ninja">
+					<!-- <li><img src="nin1.png" /></li>
+					<li><img src="nin2.png" data-alt="cat2.png" /></li>
+					<li><img src="nin3.png" data-alt="cat3.png" /></li>
+					<li><img src="nin4.png" data-alt="cat4.png" /></li>
+					<li><img src="nin5.png" data-alt="cat5.png" /></li> -->
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

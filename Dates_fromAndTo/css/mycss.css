@@ -1,0 +1,39 @@
+/******
+GENERIC TAGS
+******/
+*{
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+} 
+ol, ul {
+    list-style: none;
+}
+
+
+button{
+	clear: both;
+	margin-left: 20px;
+}
+
+
+.area{
+	display: inline;
+	width: 200px;
+	height: 200px;
+	float: left;
+}
+
+
+#container{
+	margin: 0 auto;
+	max-width: 900px;
+	overflow: hidden;
+	height: auto;
+}
+
+#ui-datepicker-div{
+	display: none;
+}
